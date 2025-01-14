@@ -1,15 +1,25 @@
+import 'package:meals/pages/categories_meals_page.dart';
+
 import '../models/category.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {
   final Category category;
+
   const CategoryItem(this.category, {super.key});
+
+  void _selectCategory(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+      return CategoriesMealsPage(category);
+    }));
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => _selectCategory(context),
       borderRadius: BorderRadius.circular(10),
+      splashColor: Theme.of(context).primaryColor,
       child: Container(
         padding: const EdgeInsets.all(25),
         decoration: BoxDecoration(
