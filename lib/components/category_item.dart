@@ -1,4 +1,3 @@
-import 'package:meals/pages/categories_meals_page.dart';
 import 'package:meals/utils/app_routes.dart';
 
 import '../models/category.dart';
@@ -10,9 +9,6 @@ class CategoryItem extends StatelessWidget {
   const CategoryItem(this.category, {super.key});
 
   void _selectCategory(BuildContext context) {
-    /* Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-      return CategoriesMealsPage(category);
-    })); */
     Navigator.of(context)
         .pushNamed(AppRoutes.CATEGORIES_MEALS, arguments: category);
   }
