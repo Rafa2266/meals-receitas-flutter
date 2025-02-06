@@ -13,8 +13,8 @@ class TabsPage extends StatefulWidget {
 class _TabsPageState extends State<TabsPage> {
   int _selectedPageIndex = 0;
   final List<Map<String, Object>> _pages = [
-    {'component': CategoriesPage(), 'title': 'Lista de categorias'},
-    {'component': FavoriteCategoyPage(), 'title': 'Meus favoritos'},
+    {'component': const CategoriesPage(), 'title': 'Lista de categorias'},
+    {'component': const FavoriteCategoyPage(), 'title': 'Meus favoritos'},
   ];
   _selectPage(int index) {
     setState(() {
