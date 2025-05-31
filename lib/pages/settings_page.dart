@@ -3,14 +3,24 @@ import 'package:meals/components/main_drawer.dart';
 import 'package:meals/models/settings.dart';
 
 class SettingsPage extends StatefulWidget {
-  const SettingsPage({super.key});
+  const SettingsPage(
+      {super.key, required this.onSettingsChanged, required this.settings});
+
+  final Function(Settings) onSettingsChanged;
+  final Settings settings;
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  var settings = Settings();
+  late Settings settings;
+  @override
+  void initState() {
+    super.initState();
+    settings = widget.settings;
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget _createSwitch(
@@ -19,7 +29,10 @@ class _SettingsPageState extends State<SettingsPage> {
           title: Text(title),
           subtitle: Text(subtitle),
           value: value,
-          onChanged: onChanged);
+          onChanged: (value) {
+            onChanged(value);
+            widget.onSettingsChanged(widget.settings);
+          });
     }
 
     return Scaffold(
